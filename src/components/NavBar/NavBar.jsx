@@ -22,6 +22,8 @@ export default function NavBar({ user, setUser, classes }) {
           ))}
         </div>
       </div>
+      |
+      <button className="dropbtn"><Link to={'/'}>Home</Link></button>
       &nbsp;&nbsp;
       <span>Welcome, {user.name}</span>
       &nbsp;&nbsp;

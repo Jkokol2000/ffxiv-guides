@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import ClassForm from '../../components/ClassForm/ClassForm'
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
@@ -7,7 +6,9 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
-import *  as  classesApi from '../../utilities/class-api'
+import *  as  classesApi from '../../utilities/class-api';
+import ClassPage from '../ClassPage/ClassPage'
+import MainPage from '../MainPage/MainPage';
 
 
 
@@ -31,17 +32,16 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/classes" element={<NewOrderPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="classes/:name" element={<ClassPage />} />
+              <Route path="/" element={<MainPage classes = {classes}/>} />
             </Routes>
+            
           </>
           :
           <AuthPage setUser={setUser} />
       }
-      <div className="classes-container">
-        {classes.map((c) => (
-          <button key={c._id}>{c.name}</button>
-        ))}
-      </div>
-      <ClassForm />
+      
+      
     </main>
   );
 }
