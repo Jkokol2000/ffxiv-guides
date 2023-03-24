@@ -1,19 +1,9 @@
-import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 import './NavBar.css';
-import { getClasses } from '../../utilities/class-api'
 
-export default function NavBar({ user, setUser }) {
-  const [classes, setClasses] = useState([]);
 
-  useEffect(() => {
-    async function fetchClasses() {
-      const classData = await getClasses();
-      setClasses(classData);
-    }
-    fetchClasses();
-  }, []);
+export default function NavBar({ user, setUser, classes }) {
   
   function handleLogOut() {
     userService.logOut();
