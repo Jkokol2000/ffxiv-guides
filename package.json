@@ -10,6 +10,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "mongo": "^0.1.0",
     "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
@@ -41,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

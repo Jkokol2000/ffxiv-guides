@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ClassForm from '../../components/ClassForm/ClassForm'
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
@@ -16,13 +17,14 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/orders/new" element={<NewOrderPage />} />
+              <Route path="/classes" element={<NewOrderPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
             </Routes>
           </>
           :
           <AuthPage setUser={setUser} />
       }
+      <ClassForm />
     </main>
   );
 }
