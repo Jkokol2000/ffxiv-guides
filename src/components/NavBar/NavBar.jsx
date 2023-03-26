@@ -16,7 +16,7 @@ export default function NavBar({ user, setUser, classes }) {
         <button className="dropbtn">Classes</button>
         <div className="dropdown-content">
         {classes.map((classItem) => (
-            <Link key={classItem._id} to={`/classes/${classItem.name}`}>
+            <Link key={classItem._id} to={`/classes/${classItem._id}`}>
               {classItem.name}
             </Link>
           ))}

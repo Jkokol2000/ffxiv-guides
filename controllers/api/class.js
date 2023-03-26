@@ -2,7 +2,8 @@ const Class = require('../../models/class')
 
 module.exports = {
     getClasses,
-    addClass
+    addClass,
+    getClass
 }
 
 async function getClasses(req, res) {
@@ -40,3 +41,15 @@ async function addClass(req, res) {
         res.status(500).json({ message: 'Server error'})
     }
 }
+
+async function getClass (req, res) {
+    try {
+      const classId = await Class.findById(req.params.id);
+      console.log(classId)
+      res.json(classId);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+    }
+  };
+  
