@@ -1,4 +1,4 @@
-const Guide = require('../models/guide');
+const Guide = require('../../models/guide')
 
 async function getGuidesForClass(req, res) {
   try {
@@ -29,6 +29,6 @@ async function createGuide(req, res) {
 }
 
 module.exports = {
-  getGuides,
+  getGuidesForClass,
   createGuide
 };

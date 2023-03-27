@@ -1,10 +1,11 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/guides';
 
-export async function getGuidesForClass() {
+
+export async function getGuidesForClass(classId) {
     return sendRequest(`${BASE_URL}/${classId}`)
 }
 
-export async function createGuide(guideData) {
-    return sendRequest(BASE_URL, 'POST', guideData)
+export async function createGuide(guideData, classId) {
+    return sendRequest(`${BASE_URL}/${classId}`, 'POST', guideData)
 }
