@@ -2,12 +2,23 @@ const Guide = require('../../models/guide')
 
 async function getGuidesForClass(req, res) {
   try {
-    const guides = await Guide.find();
+    const guides = await Guide.find({ class: req.params.classId});
     res.json(guides);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
   }
+}
+
+async function getGuide(req, res) {
+    try {
+        const guideSearch = await Guide.findById(req.params.guideId)
+        console.log(guideSearch)
+        res.json(guideSearch)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
 }
 
 async function createGuide(req, res) {
@@ -30,5 +41,6 @@ async function createGuide(req, res) {
 
 module.exports = {
   getGuidesForClass,
-  createGuide
+  createGuide,
+  getGuide
 };

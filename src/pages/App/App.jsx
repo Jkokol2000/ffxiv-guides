@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import *  as  classesApi from '../../utilities/class-api';
 import ClassPage from '../ClassPage/ClassPage'
 import MainPage from '../MainPage/MainPage';
-import CreateGuide from '../CreateGuide/CreateGuide';
+import GuidePage from '../GuidePage/GuidePage';
 
 export default function App() {
   const [classes, setClasses] = useState([]);
@@ -29,6 +29,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path='/classes/:id' element={<ClassPage user={user} />} />
+              <Route path='/guides/:id' element={<GuidePage />} />
               <Route path="/" element={<MainPage classes={classes} />} />
             </Routes>
             

@@ -4,5 +4,6 @@ const guideCtrl = require('../../controllers/api/guide')
 
 router.post('/:classId', guideCtrl.createGuide)
 router.get('/:classId', guideCtrl.getGuidesForClass)
+router.get('/:guideId', guideCtrl.getGuide)
 
 module.exports = router;

@@ -13,13 +13,13 @@ function ClassPage(user) {
       try {
         const response = await ClassApi.getClass(id);
         setClassId(response);
-
         const guideResponse = await GuideApi.getGuidesForClass(id);
         setGuides(guideResponse)
+        console.log(guides)
       } catch (err) {
         console.error(err);
       }
-    }
+    }    
   
     fetchData();
   }, [id]);
@@ -37,7 +37,9 @@ function ClassPage(user) {
           <h2>Guides</h2>
           {guides.map((guide) => (
             <div key={guide._id}>
-              <h3>{guide.title}</h3>
+              <Link to={`/guides/${guide._id}`}>
+                <h3>{guide.title}</h3>
+              </Link>
         </div>
           ))}
           </div>

@@ -6,12 +6,11 @@ export default function CreateGuide({ classId, user }) {
     title: '',
     content: '',
     rating: 0,
-
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const guide = { ...guideData, user: user._id };
+    const guide = { ...guideData, user: user._id, class: classId };
     try {
       const newGuide = await GuideApi.createGuide(guide, classId);
       console.log(newGuide);
