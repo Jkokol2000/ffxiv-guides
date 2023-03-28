@@ -5,14 +5,16 @@ export default function ClassForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [icon, setIcon] = useState('');
+  const [classType, setClassType] = useState('')
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      await classApi.addClass({ name, description, icon });
+      await classApi.addClass({ name, description, icon, classType });
       setName('');
       setDescription('');
       setIcon('');
+      setClassType('');
     } catch (err) {
       console.log(err);
     }
@@ -28,6 +30,15 @@ export default function ClassForm() {
 
       <label htmlFor="icon">Icon Url:</label>
       <input type="text" id="icon" value={icon} onChange={(evt) => setIcon(evt.target.value)} />
+
+      <label htmlFor="classType">Class Type:</label>
+      <select name="classType" id="classType" value={classType} onChange={(evt) => setClassType(evt.target.value)}>
+        <option value="">Select a class type</option>
+        <option value="tank">Tank</option>
+        <option value="healer">Healer</option>
+        <option value="dps">DPS</option>
+      </select>
+
 
       <button type="submit">Add Class</button>
     </form>

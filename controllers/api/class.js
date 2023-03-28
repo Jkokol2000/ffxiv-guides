@@ -30,7 +30,8 @@ async function addClass(req, res) {
         const newClass = new Class({
             name: req.body.name,
             description: req.body.description,
-            icon: req.body.name
+            icon: req.body.name,
+            classType: req.body.classType
         });
 
         const savedClass = await newClass.save();

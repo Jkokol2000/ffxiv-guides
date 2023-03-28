@@ -15,7 +15,6 @@ function ClassPage(user) {
         setClassId(response);
         const guideResponse = await GuideApi.getGuidesForClass(id);
         setGuides(guideResponse)
-        console.log(guides)
       } catch (err) {
         console.error(err);
       }
@@ -27,7 +26,6 @@ function ClassPage(user) {
   if (!classId) {
     return <div>Loading...</div>;
   }
-
   return (
     <div>
       <h1>{classId.name}</h1>
@@ -35,6 +33,7 @@ function ClassPage(user) {
       { guides.length > 0 ? (
         <div>
           <h2>Guides</h2>
+          
           {guides.map((guide) => (
             <div key={guide._id}>
               <Link to={`/guides/${guide._id}`}>

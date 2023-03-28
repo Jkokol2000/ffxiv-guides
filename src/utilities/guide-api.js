@@ -7,7 +7,8 @@ export async function getGuidesForClass(classId) {
 }
 
 export async function getGuide(guideId) {
-    return sendRequest(`${BASE_URL}/${guideId}`);
+    console.log(guideId)
+    return sendRequest(`${BASE_URL}/guide/${guideId}`);
   }
 
 export async function createGuide(guideData, classId) {

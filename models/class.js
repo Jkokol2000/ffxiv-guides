@@ -13,6 +13,10 @@ const classSchema = new Schema ({
     icon: {
         type: String,
         required: true
+    },
+    classType : {
+        type: String,
+        required: true
     }
     }
 )

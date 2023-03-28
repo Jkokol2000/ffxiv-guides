@@ -11,15 +11,18 @@ async function getGuidesForClass(req, res) {
 }
 
 async function getGuide(req, res) {
+    console.log('a')
     try {
-        const guideSearch = await Guide.findById(req.params.guideId)
-        console.log(guideSearch)
-        res.json(guideSearch)
+      console.log('getGuide function called')
+      const guideId = await Guide.findById(req.params.guideId);
+      console.log(`${guideId}`)
+      res.json(guideId);
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Server Error');
+      console.error(err);
+      res.status(500).send('Server Error');
     }
-}
+  }
+  
 
 async function createGuide(req, res) {
   try {
