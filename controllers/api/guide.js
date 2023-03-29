@@ -49,7 +49,7 @@ async function createGuide(req, res) {
       class: req.body.class,
       title: req.body.title,
       content: req.body.content,
-      ranking: 0,
+      ranking: [],
       comments: []
     });
     await guide.save();
@@ -97,6 +97,24 @@ async function deleteGuide(req, res) {
   }
 }
 
+async function AddRanking(req, res) {
+  try {
+    const guide = await Guide.findById(req.params.guideId);
+    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
+    const { ranking } = req.body;
+    if (ranking) guide.ranking.push(ranking);
+    await guide.save();
+    res.json(guide);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Guide not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+}
+
+
 module.exports = {
   getGuidesForClass,
   createGuide,
@@ -104,5 +122,6 @@ module.exports = {
   createComment,
   getGuidesForUser,
   deleteGuide,
-  updateGuide
+  updateGuide,
+  AddRanking
 };

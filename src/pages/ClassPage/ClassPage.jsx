@@ -38,6 +38,7 @@ function ClassPage(user) {
               <Link to={`/guides/${guide._id}`}>
                 <h3>{guide.title}</h3>
               </Link>
+                <p>{guide.ranking}</p>
         </div>
           ))}
           </div>

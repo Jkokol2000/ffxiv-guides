@@ -30,3 +30,7 @@ export async function deleteGuide(guideId) {
 export async function updateGuide(guideId, guideData) {
     return sendRequest(`${BASE_URL}/${guideId}`, 'PUT', guideData)
 }
+
+export async function addRanking(guideId, rankingData) {
+    return sendRequest(`${BASE_URL}/ranking/${guideId}`, 'POST', rankingData)
+}

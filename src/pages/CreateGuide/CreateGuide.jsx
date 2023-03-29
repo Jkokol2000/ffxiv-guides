@@ -4,20 +4,15 @@ import * as GuideApi from '../../utilities/guide-api';
 
 export default function CreateGuide({ user }) {
   const navigate = useNavigate();
-  const [guide, setGuide] = useState({});
-  const { id: guideId } = useParams();
+  const [guide, setGuide] = useState(null);
+  const { classid, guideid } = useParams();
 
   useEffect(() => {
     async function fetchGuide() {
       try {
-        if (guideId) {
-          const guideResponse = await GuideApi.getGuide(guideId);
+        if (guideid) {
+          const guideResponse = await GuideApi.getGuide(guideid);
           setGuide(guideResponse);
-          setGuideData({
-            title: guideResponse.title || '',
-            content: guideResponse.content || '',
-            rating: guideResponse.rating || 0,
-          });
         }
       } catch (err) {
         console.error(err);
@@ -25,51 +20,51 @@ export default function CreateGuide({ user }) {
     }
 
     fetchGuide();
-  }, [guideId]);
-  
-  const [guideData, setGuideData] = useState({
-    title: '',
-    content: '',
-    rating: 0,
-  });
+  }, [guideid]);
+
+  const isEditing = !!guideid;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const guide = { ...guideData, user: user._id };
+    const guideData = {
+      title: event.target.title.value,
+      content: event.target.content.value,
+      rating: [],
+      user: user._id,
+    };
     try {
-      if (guideId) {
-        guide._id = guideId;
-        await GuideApi.updateGuide(guideId, guide);
-        navigate(`/guides/${guideId}`);
+      if (isEditing) {
+        await GuideApi.updateGuide(guideid, guideData);
+        navigate(`/guides/${guideid}`);
       } else {
-        const newGuide = await GuideApi.createGuide(guide);
+        const newGuide = await GuideApi.createGuide(classid, guideData);
         navigate(`/guides/${newGuide._id}`);
       }
     } catch (error) {
       console.error(error);
     }
   };
-  
 
-  const handleChange = (event) => {
-    setGuideData({ ...guideData, [event.target.name]: event.target.value });
-  };
+  if (!isEditing && !classid) {
+    // Return an error message if classid is not provided in the URL
+    return <div>Invalid URL: classid not provided.</div>;
+  }
 
   return (
     <div>
-      <h1>{guide._id ? 'Edit Guide' : 'Create Guide'}</h1>
+      <h1>{isEditing ? 'Edit Guide' : 'Create Guide'}</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
-          <input type="text" name="title" value={guideData.title} onChange={handleChange} />
+          <input type="text" name="title" defaultValue={guide?.title} />
         </label>
         <br />
         <label>
           Content:
-          <textarea name="content" value={guideData.content} onChange={handleChange} />
+          <textarea name="content" defaultValue={guide?.content} />
         </label>
         <br />
-        <button type="submit">{guide._id ? 'Save Guide' : 'Create Guide'}</button>
+        <button type="submit">{isEditing ? 'Save Guide' : 'Create Guide'}</button>
       </form>
     </div>
   );

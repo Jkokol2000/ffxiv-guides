@@ -28,10 +28,8 @@ const guideSchema = new Schema ({
         required: true
     },
     ranking:{
-        type: Number,
-        min: 0,
-        max: 5,
-        default: 0
+        type: Array,
+        default: []
     },
     comments: [commentSchema],
     createdAt: {

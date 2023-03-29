@@ -10,5 +10,6 @@ router.post('comments/:guideId', guideCtrl.createComment)
 router.get('/account/:userId', guideCtrl.getGuidesForUser)
 router.delete('/:guideId', auth, guideCtrl.deleteGuide)
 router.put('/:guideId', auth, guideCtrl.updateGuide)
+router.post('/ranking/:guideId', guideCtrl.AddRanking)
 
 module.exports = router;
