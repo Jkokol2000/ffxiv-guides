@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
 import * as GuideApi from '../../utilities/guide-api';
 
 export default function GuidePage() {
@@ -24,8 +25,18 @@ export default function GuidePage() {
 
   return (
     <div>
-      <h1>{guide.title}</h1>
-      <p>{guide.content}</p>
+      <div>
+        <h1>{guide.title}</h1>
+        <p>{guide.content}</p>
+      </div>
+      <AddCommentForm guideId={guide._id} />
+      <h2>Comments</h2>
+      {guide.comments.map((comment) => (
+        <div key={comment._id}>
+          <p>{comment.content}</p>
+          <p>by {comment.user.username}</p>
+        </div>
+      ))}
     </div>
   );
 }

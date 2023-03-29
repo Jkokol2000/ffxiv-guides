@@ -25,7 +25,7 @@ export default function NavBar({ user, setUser, classes }) {
       |
       <button className="dropbtn"><Link to={'/'}>Home</Link></button>
       &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
+      <span>Welcome, <Link to={`/accounts/${user._id}`}>{user.name}</Link></span>
       &nbsp;&nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>

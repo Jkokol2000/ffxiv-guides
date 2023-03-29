@@ -42,8 +42,48 @@ async function createGuide(req, res) {
   }
 }
 
+async function createComment(req, res) {
+  try {
+    const guide = await Guide.findById(req.params.guideId);
+    guide.comments.push(req.body);
+    await guide.save();
+    res.status(201).json(guide);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
+async function getGuidesForUser(req, res) {
+  try {
+    const guides = await Guide.find({ user: req.params.userId});
+    res.json(guides);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
+async function deleteGuide(req, res) { 
+  try {
+    const guide = await Guide.findById(req.params.guideId);
+    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
+    await Guide.findByIdAndRemove(req.params.guideId);
+    res.json({ msg: 'Guide removed' });
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Guide not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+}
+
 module.exports = {
   getGuidesForClass,
   createGuide,
-  getGuide
+  getGuide,
+  createComment,
+  getGuidesForUser,
+  deleteGuide
 };
