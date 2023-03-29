@@ -6,6 +6,7 @@ export default function CreateGuide({ user }) {
   const navigate = useNavigate();
   const [guide, setGuide] = useState(null);
   const { classid, guideid } = useParams();
+  console.log(classid)
 
   useEffect(() => {
     async function fetchGuide() {
@@ -37,7 +38,7 @@ export default function CreateGuide({ user }) {
         await GuideApi.updateGuide(guideid, guideData);
         navigate(`/guides/${guideid}`);
       } else {
-        const newGuide = await GuideApi.createGuide(classid, guideData);
+        const newGuide = await GuideApi.createGuide(guideData, classid);
         navigate(`/guides/${newGuide._id}`);
       }
     } catch (error) {
