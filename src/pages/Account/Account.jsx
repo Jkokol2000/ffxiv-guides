@@ -31,6 +31,8 @@ export default function Account({ user }) {
     }
 
     return (
+    <main className="Account">
+        {user ? (
         <div>
         <h1>{userData.name}</h1>
         <h2>{userData.email}</h2>
@@ -41,5 +43,11 @@ export default function Account({ user }) {
         </ul>
         ))}
         </div>
+    ) : (
+        <div>
+        <p>Please <Link to='/login'>Login</Link> or <Link to="signup">Signup</Link> to view your account</p>
+        </div>
+    )}
+</main>
     );
-    }
+}

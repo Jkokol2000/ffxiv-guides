@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as GuideApi from '../../utilities/guide-api';
 
-export default function CreateGuide({ classId, user }) {
+
+export default function CreateGuide({ user }) {
+  const navigate = useNavigate();
   const [guideData, setGuideData] = useState({
     title: '',
     content: '',
     rating: 0,
   });
+  const { id: classId } = useParams();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,6 +18,7 @@ export default function CreateGuide({ classId, user }) {
     try {
       const newGuide = await GuideApi.createGuide(guide, classId);
       console.log(newGuide);
+      navigate(`/guides/${newGuide._id}`) ;
     } catch (error) {
       console.error(error);
     }

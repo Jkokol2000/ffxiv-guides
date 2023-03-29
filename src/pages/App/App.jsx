@@ -9,6 +9,7 @@ import ClassPage from '../ClassPage/ClassPage'
 import MainPage from '../MainPage/MainPage';
 import GuidePage from '../GuidePage/GuidePage';
 import Account from '../Account/Account';
+import CreateGuide from '../CreateGuide/CreateGuide';
 
 export default function App() {
   const [classes, setClasses] = useState([]);
@@ -32,7 +33,8 @@ export default function App() {
               <Route path='/classes/:id' element={<ClassPage user={user} />} />
               <Route path='/guides/:id' element={<GuidePage />} />
               <Route path="/" element={<MainPage classes={classes} />} />
-              <Route path='/accounts/:id' element={<Account setUser={setUser} user={user} />} />'
+              <Route path='/accounts/:id' element={<Account setUser={setUser} user={user} />} />
+              <Route path='/create/:id' element={<CreateGuide user={user} />} />
             </Routes>
             
           </>

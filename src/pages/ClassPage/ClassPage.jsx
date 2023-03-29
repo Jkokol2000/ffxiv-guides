@@ -47,7 +47,7 @@ function ClassPage(user) {
       )}
 
       {user ? (
-       <CreateGuide classId={id} user={user} />
+       <Link to={`/create/${id}`}>Create Guide</Link>
       ) : (
         <div>
           <p>Please <Link to='/login'>Login</Link> or <Link to="signup">Signup</Link> to create guides</p>
