@@ -10,6 +10,24 @@ async function getGuidesForClass(req, res) {
   }
 }
 
+async function updateGuide(req, res) {
+  try {
+    const guide = await Guide.findById(req.params.guideId);
+    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
+    const { title, content } = req.body;
+    if (title) guide.title = title;
+    if (content) guide.content = content;
+    await guide.save();
+    res.json(guide);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Guide not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+}
+
 async function getGuide(req, res) {
     console.log('a')
     try {
@@ -85,5 +103,6 @@ module.exports = {
   getGuide,
   createComment,
   getGuidesForUser,
-  deleteGuide
+  deleteGuide,
+  updateGuide
 };

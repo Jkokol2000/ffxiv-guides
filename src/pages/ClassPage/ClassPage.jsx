@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import * as ClassApi from '../../utilities/class-api'
 import * as GuideApi from '../../utilities/guide-api'
-import CreateGuide from '../CreateGuide/CreateGuide';
 
 function ClassPage(user) {
   const [classId, setClassId] = useState(null);

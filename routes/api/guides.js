@@ -9,5 +9,6 @@ router.get('/guide/:guideId', guideCtrl.getGuide)
 router.post('comments/:guideId', guideCtrl.createComment)
 router.get('/account/:userId', guideCtrl.getGuidesForUser)
 router.delete('/:guideId', auth, guideCtrl.deleteGuide)
+router.put('/:guideId', auth, guideCtrl.updateGuide)
 
 module.exports = router;

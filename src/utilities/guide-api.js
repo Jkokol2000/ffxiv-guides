@@ -26,3 +26,7 @@ export async function createComment(commentData, guideId) {
 export async function deleteGuide(guideId) {
     return sendRequest(`${BASE_URL}/${guideId}`, 'DELETE')
 }
+
+export async function updateGuide(guideId, guideData) {
+    return sendRequest(`${BASE_URL}/${guideId}`, 'PUT', guideData)
+}

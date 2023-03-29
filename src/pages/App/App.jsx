@@ -35,6 +35,7 @@ export default function App() {
               <Route path="/" element={<MainPage classes={classes} />} />
               <Route path='/accounts/:id' element={<Account setUser={setUser} user={user} />} />
               <Route path='/create/:id' element={<CreateGuide user={user} />} />
+              <Route path='/edit/:id' element={<CreateGuide user={user} />} />
             </Routes>
             
           </>

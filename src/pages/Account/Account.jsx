@@ -39,7 +39,11 @@ export default function Account({ user }) {
         <h2>Guides</h2>
         {guides.map((guide) => (
         <ul>
-            <li key={guide._id}><Link to={`/guides/${guide._id}`}><h3>{guide.title}</h3></Link><button onClick={() => deleteGuide(guide._id)}>Delete</button></li>
+            <li key={guide._id}>
+            <Link to={`/guides/${guide._id}`}><h3>{guide.title}</h3></Link>
+            <Link to={`/edit/${guide._id}`}><button>Edit</button></Link>
+            <button onClick={() => deleteGuide(guide._id)}>Delete</button>
+            </li>
         </ul>
         ))}
         </div>
