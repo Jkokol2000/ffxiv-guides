@@ -1,14 +1,21 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const commentSchema = new Schema({
-    content: String,
+const commentSchema = new mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-})
-
+}
+        )
 
 const guideSchema = new Schema ({
     user: {

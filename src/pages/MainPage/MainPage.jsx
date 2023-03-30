@@ -1,17 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ClassForm from '../../components/ClassForm/ClassForm';
+import '../MainPage/MainPage.css';
 
-export default function MainPage({classes}) {
-    return(
-        <div>
-        <div className="classes-container">
+export default function MainPage({ classes }) {
+  console.log(classes)
+  return (
+    <div>
+      <div className="classes-container">
         {classes.map((c) => (
-          <button key={c._id}>{c.name}</button>
+          <Link className="class-link"to={`/classes/${c._id}`} key={c._id}>
+            <div className="class-card">
+              <img src={c.icon} alt={c.name} />
+              <h3>{c.name}</h3>
+            </div>
+          </Link>
         ))}
-        
       </div>
       <ClassForm />
-      </div>
-      
-    );
+    </div>
+  );
 }

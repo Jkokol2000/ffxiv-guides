@@ -6,10 +6,11 @@ const auth = require('../../config/ensureLoggedIn')
 router.post('/:classId', guideCtrl.createGuide)
 router.get('/:classId', guideCtrl.getGuidesForClass)
 router.get('/guide/:guideId', guideCtrl.getGuide)
-router.post('comments/:guideId', guideCtrl.createComment)
+router.post('/:guideId/comments', guideCtrl.createComment)
+router.get('/:guideId/comments', guideCtrl.getComments)
 router.get('/account/:userId', guideCtrl.getGuidesForUser)
 router.delete('/:guideId', auth, guideCtrl.deleteGuide)
 router.put('/:guideId', auth, guideCtrl.updateGuide)
-router.post('/ranking/:guideId', guideCtrl.AddRanking)
+router.post(':/guideId/ranking', guideCtrl.AddRanking)
 
 module.exports = router;

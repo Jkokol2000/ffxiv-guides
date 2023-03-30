@@ -6,7 +6,6 @@ export default function CreateGuide({ user }) {
   const navigate = useNavigate();
   const [guide, setGuide] = useState(null);
   const { classid, guideid } = useParams();
-  console.log(classid)
 
   useEffect(() => {
     async function fetchGuide() {
@@ -30,9 +29,12 @@ export default function CreateGuide({ user }) {
     const guideData = {
       title: event.target.title.value,
       content: event.target.content.value,
+      class: classid,
       rating: [],
       user: user._id,
+      author: user.name
     };
+    console.log(guideData)
     try {
       if (isEditing) {
         await GuideApi.updateGuide(guideid, guideData);

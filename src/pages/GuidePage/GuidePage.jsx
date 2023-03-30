@@ -64,9 +64,9 @@ export default function GuidePage() {
         {guide.comments.map((comment) => (
           <div key={comment._id}>
             <p>{comment.content}</p>
-            <p>by {comment.user.username}</p>
           </div>
         ))}
+        <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} />
       </div>
       </div>
       );

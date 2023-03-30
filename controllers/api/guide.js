@@ -45,7 +45,8 @@ async function getGuide(req, res) {
 async function createGuide(req, res) {
   try {
     const guide = new Guide({
-      user: req.user._id,
+      user: req.body.user,
+      author: req.body.author,
       class: req.body.class,
       title: req.body.title,
       content: req.body.content,
@@ -63,12 +64,33 @@ async function createGuide(req, res) {
 async function createComment(req, res) {
   try {
     const guide = await Guide.findById(req.params.guideId);
-    guide.comments.push(req.body);
+    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
+    const { content } = req.body;
+    const comment = { content };
+    guide.comments.push(comment);
     await guide.save();
-    res.status(201).json(guide);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Server error' });
+    res.json(guide);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Guide not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+}
+
+
+async function getComments(req, res) {
+  try {
+    const guide = await Guide.findById(req.params.guideId);
+    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
+    res.json(guide.comments);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Guide not found' });
+    }
+    res.status(500).send('Server Error');
   }
 }
 
@@ -123,5 +145,6 @@ module.exports = {
   getGuidesForUser,
   deleteGuide,
   updateGuide,
-  AddRanking
+  AddRanking,
+  getComments
 };

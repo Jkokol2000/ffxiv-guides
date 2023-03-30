@@ -20,7 +20,11 @@ export async function createGuide(guideData, classId) {
 }
 
 export async function createComment(commentData, guideId) {
-    return sendRequest(`${BASE_URL}/comment/${guideId}`, 'POST', commentData)
+    return sendRequest(`${BASE_URL}/${guideId}/comments`, 'POST', commentData)
+}
+
+export async function getComments(guideId) {
+    return sendRequest(`${BASE_URL}/${guideId}/comments/`)
 }
 
 export async function deleteGuide(guideId) {
