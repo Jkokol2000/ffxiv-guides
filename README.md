@@ -5,7 +5,7 @@ This app is a Final Fantasy XIV (FFXIV) guide website that provides tips, strate
 ## Screenshots
 
 ![Landing Page](/public/screenshots/Screen%20Shot%202023-03-31%20at%202.49.14%20PM.png)
-![Example Guide](/screenshots/example-guide.png)
+![Example Guide](/public/screenshots/Screen%20Shot%202023-03-31%20at%202.56.47%20PM.png)
 
 ## Technologies Used
 
