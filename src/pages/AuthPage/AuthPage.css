@@ -1,0 +1,58 @@
+.AuthMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .SignIn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+    border-radius: 10px;
+  }
+  
+  .SignIn:hover {
+    opacity: 1;
+  }
+  
+  .AuthForm {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    width: 500px;
+    border-radius: 10px;
+  }
+  
+  .AuthInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .AuthButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 10px;
+  }
+  
+  .AuthButton:hover {
+    opacity: 1;
+  }
+  
