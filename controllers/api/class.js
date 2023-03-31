@@ -27,10 +27,20 @@ async function getClasses(req, res) {
 
 async function addClass(req, res) {
     try {
+        const className = req.body.name.replace(/\s/g, '').toLowerCase();
+        const classIconUrl = `https://xivapi.com/cj/1/${className}.png`
+        const response = await fetch(classIconUrl);
+        console.log(response)
+
+
+        if (!response.ok) {
+            return res.status(404).json({ error: 'Class not found' });
+        }
+
         const newClass = new Class({
             name: req.body.name,
             description: req.body.description,
-            icon: req.body.name,
+            icon: classIconUrl,
             classType: req.body.classType
         });
 

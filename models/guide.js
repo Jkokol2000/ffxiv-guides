@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const commentSchema = new mongoose.Schema({
+const commentSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'User'
+    },
+    author: {
+        type: String,
+        required: true
     },
     content: {
         type: String,
@@ -17,10 +21,15 @@ const commentSchema = new mongoose.Schema({
 }
         )
 
+
 const guideSchema = new Schema ({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'User'
+    },
+    author: {
+        type: String,
+        required: true
     },
     class: {
         type: mongoose.Schema.Types.ObjectId,
@@ -38,7 +47,7 @@ const guideSchema = new Schema ({
         type: Array,
         default: []
     },
-    comments: [commentSchema],
+    comments: [commentSchema], 
     createdAt: {
         type: Date,
         default: Date.now

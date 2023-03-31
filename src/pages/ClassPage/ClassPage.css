@@ -34,3 +34,36 @@
     text-align: right;
   }
   
+.no-guides {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+.create-guide {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.create-guide:hover {
+    background-color: #3e8e41;
+}
+
+.class-description {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.class-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

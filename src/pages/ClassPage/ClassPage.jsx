@@ -29,8 +29,8 @@ function ClassPage(user) {
   }
   return (
     <div>
-      <h1>{classId.name}</h1>
-      <p>{classId.description}</p>
+      <h1 className='class-name'>{classId.name}</h1>
+      <p className='class-description'>{classId.description}</p>
       {guides.length > 0 ? (
         <div>
           <h2>Guides</h2>
@@ -49,11 +49,11 @@ function ClassPage(user) {
           ))}
         </div>
       ) : (
-        <div>No guides available. Be the first!</div>
+        <div className='no-guides'>No guides available. Be the first!</div>
       )}
 
       {user ? (
-        <Link to={`/create/${id}`}>Create Guide</Link>
+        <Link className='create-guide' to={`/create/${id}`}>Create Guide</Link>
       ) : (
         <div>
           <p>

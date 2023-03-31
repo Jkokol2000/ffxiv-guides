@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import * as GuideApi from '../../utilities/guide-api';
+import './CreateGuide.css';
 
 export default function CreateGuide({ user }) {
   const navigate = useNavigate();
@@ -54,20 +56,21 @@ export default function CreateGuide({ user }) {
   }
 
   return (
-    <div>
-      <h1>{isEditing ? 'Edit Guide' : 'Create Guide'}</h1>
+    <div className="create-guide-container">
+      <h1 className="create-guide-title">{isEditing ? 'Edit Guide' : 'Create Guide'}</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="create-guide-label">
           Title:
-          <input type="text" name="title" defaultValue={guide?.title} />
+          <input type="text" name="title" defaultValue={guide?.title} className="create-guide-input" />
         </label>
         <br />
-        <label>
+        <label className="create-guide-label">
           Content:
-          <textarea name="content" defaultValue={guide?.content} />
+          <textarea name="content" defaultValue={guide?.content} className="create-guide-textarea" />
+          <ReactMarkdown className="create-guide-markdown">{guide?.content}</ReactMarkdown>
         </label>
         <br />
-        <button type="submit">{isEditing ? 'Save Guide' : 'Create Guide'}</button>
+        <button type="submit" className="create-guide-button">{isEditing ? 'Save Guide' : 'Create Guide'}</button>
       </form>
     </div>
   );

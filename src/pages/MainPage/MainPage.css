@@ -2,14 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
   }
   
   .class-card {
-    background-color: white;
+    background-color: gray;
     border: 1px solid gray;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +31,8 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin-bottom: .5 rem;
+    
   }
   
   .class-link {

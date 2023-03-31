@@ -65,8 +65,11 @@ async function createComment(req, res) {
   try {
     const guide = await Guide.findById(req.params.guideId);
     if (!guide) return res.status(404).json({ msg: 'Guide not found' });
-    const { content } = req.body;
-    const comment = { content };
+    const comment = {
+      user: req.user._id,
+      author: req.user.name,
+      content: req.body.content,
+    };
     guide.comments.push(comment);
     await guide.save();
     res.json(guide);

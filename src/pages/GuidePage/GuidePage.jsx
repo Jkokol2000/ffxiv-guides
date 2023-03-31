@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
 import * as GuideApi from '../../utilities/guide-api';
+import './GuidePage.css';
 
-export default function GuidePage() {
+export default function GuidePage({user}) {
   const [guide, setGuide] = useState(null);
   const [selectedStar, setSelectedStar] = useState(0);
   const { id } = useParams();
@@ -43,7 +44,7 @@ export default function GuidePage() {
   const stars = [1, 2, 3, 4, 5];
 
   return (
-    <div>
+    <div className='guide-page'>
       <div>
         <h1>{guide.title}</h1>
         <p>{guide.content}</p>
@@ -62,11 +63,12 @@ export default function GuidePage() {
 
         <h2>Comments</h2>
         {guide.comments.map((comment) => (
-          <div key={comment._id}>
+          <div className="comment"key={comment._id}>
+            <h3>{comment.author}</h3>
             <p>{comment.content}</p>
           </div>
         ))}
-        <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} />
+        <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} user={user} />
       </div>
       </div>
       );
