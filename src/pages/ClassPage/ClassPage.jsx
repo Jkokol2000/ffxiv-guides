@@ -41,9 +41,6 @@ function ClassPage(user) {
                 <h3>{guide.title}</h3>
               </Link>
               <p className="author">{guide.author}</p>
-              <div className="rating-box">
-                <p className="rating">{guide.ranking}</p>
-              </div>
               <p className="date">{new Date(guide.createdAt).toDateString()}</p>
             </div>
           ))}
