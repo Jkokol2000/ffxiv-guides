@@ -6,7 +6,6 @@ import './GuidePage.css';
 
 export default function GuidePage({user}) {
   const [guide, setGuide] = useState(null);
-  const [selectedStar, setSelectedStar] = useState(0);
   const { id } = useParams();
   useEffect(() => {
     async function fetchData() {
@@ -18,30 +17,12 @@ export default function GuidePage({user}) {
         console.error(err);
       }
     }
-
-    fetchData();
+  fetchData();
   }, [id]);
-
-  const handleStarClick = (star) => {
-    setSelectedStar(star);
-  };
-
-  const handleSubmitRanking = async (event) => {
-    event.preventDefault();
-    try {
-      const ranking = { ranking: selectedStar };
-      const updatedGuide = await GuideApi.updateGuide(id, ranking);
-      setGuide(updatedGuide);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+  
   if (!guide) {
     return <div>Loading...</div>;
   }
-
-  const stars = [1, 2, 3, 4, 5];
 
   return (
     <div className='guide-page'>
@@ -49,27 +30,16 @@ export default function GuidePage({user}) {
         <h1>{guide.title}</h1>
         <p>{guide.content}</p>
       </div>
-      <div>
-        <h2>Ranking</h2>
-        <form onSubmit={handleSubmitRanking}>
-          {stars.map((star) => (
-            <label key={star}>
-              <input type="radio" name="ranking" value={star} onClick={() => handleStarClick(star)} />
-              {star} Star
-            </label>
-          ))}
-          <button type="submit">Submit</button>
-        </form>
-
+  
         <h2>Comments</h2>
         {guide.comments.map((comment) => (
           <div className="comment"key={comment._id}>
-            <h3>{comment.author}</h3>
+            <div className='comment-header'><h3>{comment.author} - {new Date(comment.createdAt).toLocaleDateString()}</h3></div>
             <p>{comment.content}</p>
           </div>
         ))}
         <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} user={user} />
       </div>
-      </div>
+  
       );
-}
+    }

@@ -21,6 +21,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 40px;
+    flex-direction: row;
   }
   
   .guide-page label {
@@ -51,7 +52,7 @@
   
   .guide-page .comment {
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 10px 12vmax;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
@@ -70,4 +71,13 @@
   .guide-page .add-comment-form {
     margin-top: 40px;
   }
+
+  .guide-page .rankings{
+    display: inline-block;
+
+  }
   
+  .comment-header {
+    display: flex;
+    align-items: center;
+  }

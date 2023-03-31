@@ -129,7 +129,12 @@ async function AddRanking(req, res) {
     const { ranking } = req.body;
     if (ranking) guide.ranking.push(ranking);
     await guide.save();
-    res.json(guide);
+    
+    // calculate average ranking
+    const totalRankings = guide.ranking.reduce((acc, curr) => acc + curr, 0);
+    const averageRanking = totalRankings / guide.ranking.length;
+    
+    res.json({ guide, averageRanking });
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
@@ -138,6 +143,7 @@ async function AddRanking(req, res) {
     res.status(500).send('Server Error');
   }
 }
+
 
 
 module.exports = {
