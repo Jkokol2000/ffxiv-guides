@@ -17,7 +17,6 @@ export default function MainPage({ classes }) {
           </Link>
         ))}
       </div>
-      <ClassForm />
     </div>
   );
 }
