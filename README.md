@@ -17,14 +17,14 @@ This app is a Final Fantasy XIV (FFXIV) guide website that provides tips, strate
 
 ## Getting Started
 
-To view the deployed app, visit [Heroku](https://your-heroku-app-url.com/).
+To view the deployed app, visit [Heroku](https://dashboard.heroku.com/apps/ffxivguides).
 
-To view the project planning on Trello, visit [here](https://trello.com/b/your-trello-board-url).
+To view the project planning on Trello, visit [here](https://trello.com/b/uB70jMna/project-4).
 
 ## Next Steps
 
 Planned future enhancements include:
 
-- Adding a user authentication system
-- Allowing users to submit their own guides
-- Improving the UI and UX of the site
+- Add designation between Admin made guides and User made guides.
+- Additional Styling
+- Improved UI and UX
