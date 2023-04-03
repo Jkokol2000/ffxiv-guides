@@ -6,11 +6,11 @@ import './GuidePage.css';
 
 export default function GuidePage({user}) {
   const [guide, setGuide] = useState(null);
+  const [comments, setComments] = useState([])
   const { id } = useParams();
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log(id)
         const guideResponse = await GuideApi.getGuide(id);
         setGuide(guideResponse);
       } catch (err) {
@@ -18,7 +18,9 @@ export default function GuidePage({user}) {
       }
     }
   fetchData();
-  }, [id]);
+  }, [id, comments]);
+
+  
   
   if (!guide) {
     return <div>Loading...</div>;
@@ -38,7 +40,7 @@ export default function GuidePage({user}) {
             <p>{comment.content}</p>
           </div>
         ))}
-        <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} user={user} />
+        <AddCommentForm guideId={id} guide={guide} setGuide={setGuide} setComments={setComments} user={user} />
       </div>
   
       );

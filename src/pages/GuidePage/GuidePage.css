@@ -55,6 +55,7 @@
     padding: 10px 12vmax;
     border: 1px solid #ddd;
     border-radius: 5px;
+    background-color: grey;
   }
   
   .guide-page .comment p {

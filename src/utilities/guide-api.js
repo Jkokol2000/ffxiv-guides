@@ -11,7 +11,6 @@ export async function getGuidesForUser(userId) {
 }
 
 export async function getGuide(guideId) {
-    console.log(guideId)
     return sendRequest(`${BASE_URL}/guide/${guideId}`);
   }
 

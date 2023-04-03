@@ -30,7 +30,6 @@ async function addClass(req, res) {
         const className = req.body.name.replace(/\s/g, '').toLowerCase();
         const classIconUrl = `https://xivapi.com/cj/1/${className}.png`
         const response = await fetch(classIconUrl);
-        console.log(response)
 
 
         if (!response.ok) {
@@ -56,7 +55,6 @@ async function addClass(req, res) {
 async function getClass (req, res) {
     try {
       const classId = await Class.findById(req.params.id);
-      console.log(classId)
       res.json(classId);
     } catch (err) {
       console.error(err);

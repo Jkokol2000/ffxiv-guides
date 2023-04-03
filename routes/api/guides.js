@@ -11,6 +11,5 @@ router.get('/:guideId/comments', guideCtrl.getComments)
 router.get('/account/:userId', guideCtrl.getGuidesForUser)
 router.delete('/:guideId', auth, guideCtrl.deleteGuide)
 router.put('/:guideId', auth, guideCtrl.updateGuide)
-router.post(':/guideId/ranking', guideCtrl.AddRanking)
 
 module.exports = router;

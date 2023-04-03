@@ -36,7 +36,6 @@ export default function CreateGuide({ user }) {
       user: user._id,
       author: user.name
     };
-    console.log(guideData)
     try {
       if (isEditing) {
         await GuideApi.updateGuide(guideid, guideData);

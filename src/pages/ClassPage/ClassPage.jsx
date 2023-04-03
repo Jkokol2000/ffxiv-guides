@@ -29,7 +29,7 @@ function ClassPage(user) {
   }
   return (
     <div>
-      <h1 className='class-name'>{classId.name}</h1>
+      <h1>{classId.name}</h1>
       <p className='class-description'>{classId.description}</p>
       {guides.length > 0 ? (
         <div>

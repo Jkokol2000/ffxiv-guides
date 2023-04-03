@@ -29,11 +29,8 @@ async function updateGuide(req, res) {
 }
 
 async function getGuide(req, res) {
-    console.log('a')
     try {
-      console.log('getGuide function called')
       const guideId = await Guide.findById(req.params.guideId);
-      console.log(`${guideId}`)
       res.json(guideId);
     } catch (err) {
       console.error(err);
@@ -72,7 +69,7 @@ async function createComment(req, res) {
     };
     guide.comments.push(comment);
     await guide.save();
-    res.json(guide);
+    res.json(guide.comments);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
@@ -122,28 +119,6 @@ async function deleteGuide(req, res) {
   }
 }
 
-async function AddRanking(req, res) {
-  try {
-    const guide = await Guide.findById(req.params.guideId);
-    if (!guide) return res.status(404).json({ msg: 'Guide not found' });
-    const { ranking } = req.body;
-    if (ranking) guide.ranking.push(ranking);
-    await guide.save();
-    
-    // calculate average ranking
-    const totalRankings = guide.ranking.reduce((acc, curr) => acc + curr, 0);
-    const averageRanking = totalRankings / guide.ranking.length;
-    
-    res.json({ guide, averageRanking });
-  } catch (err) {
-    console.error(err.message);
-    if (err.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Guide not found' });
-    }
-    res.status(500).send('Server Error');
-  }
-}
-
 
 
 module.exports = {
@@ -154,6 +129,5 @@ module.exports = {
   getGuidesForUser,
   deleteGuide,
   updateGuide,
-  AddRanking,
   getComments
 };

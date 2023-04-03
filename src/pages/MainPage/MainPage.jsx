@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ClassForm from '../../components/ClassForm/ClassForm';
 import '../MainPage/MainPage.css';
 
 export default function MainPage({ classes }) {
-  console.log(classes)
   return (
     <div>
       <div className="classes-container">

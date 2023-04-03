@@ -14,7 +14,7 @@ export default function ClassForm() {
       setDescription('');
       setClassType('');
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
