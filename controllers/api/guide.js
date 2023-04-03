@@ -42,8 +42,8 @@ async function getGuide(req, res) {
 async function createGuide(req, res) {
   try {
     const guide = new Guide({
-      user: req.body.user,
-      author: req.body.author,
+      user: req.user._id,
+      author: req.user.name,
       class: req.body.class,
       title: req.body.title,
       content: req.body.content,

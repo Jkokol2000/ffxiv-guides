@@ -31,10 +31,7 @@ export default function CreateGuide({ user }) {
     const guideData = {
       title: event.target.title.value,
       content: event.target.content.value,
-      class: classid,
-      rating: [],
-      user: user._id,
-      author: user.name
+      class: classid
     };
     try {
       if (isEditing) {
